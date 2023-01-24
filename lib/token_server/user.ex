@@ -7,13 +7,21 @@ defmodule TokenServer.User do
   schema "users" do
     field :name, :string
     field :password_hash, :string
+    field :password, :string, virtual: true
     timestamps()
   end
 
-  @required [:name, :password_hash]
+  @required [:name, :password]
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required)
     |> validate_required(@required)
+    |> put_password_hash()
   end
+
+  defp put_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+    change(changeset, Argon2.add_hash(password))
+  end
+
+  defp put_password_hash(changeset), do: changeset
 end
