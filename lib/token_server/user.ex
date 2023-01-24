@@ -12,10 +12,18 @@ defmodule TokenServer.User do
   end
 
   @required [:name, :password]
+
+  def build(params) do
+    params
+    |> changeset()
+    |> apply_action(:insert)
+  end
+
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required)
     |> validate_required(@required)
+    |> validate_length(:password, min: 6, max: 20)
     |> put_password_hash()
   end
 
