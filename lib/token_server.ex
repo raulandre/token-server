@@ -1,5 +1,6 @@
 defmodule TokenServer do
   alias TokenServer.User
+
   @moduledoc """
   TokenServer keeps the contexts that define your domain
   and business logic.
