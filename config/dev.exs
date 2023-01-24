@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :token_server, TokenServer.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "123qwe",
   hostname: "localhost",
   database: "token_server_dev",
   stacktrace: true,
