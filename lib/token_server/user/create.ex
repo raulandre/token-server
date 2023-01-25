@@ -8,5 +8,5 @@ defmodule TokenServer.User.Create do
   end
 
   defp create_user({:ok, user}), do: Repo.insert(user)
-  defp create_user({:err, _} = error), do: error
+  defp create_user({:error, _} = error), do: error
 end
