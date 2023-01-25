@@ -7,7 +7,7 @@ defmodule TokenServerWeb.Router do
 
   scope "/api", TokenServerWeb do
     pipe_through :api
-    resources "/users", UsersController, only: [:create]
+    resources "/users", UsersController, only: [:create, :delete]
   end
 
   # Enables LiveDashboard only for development

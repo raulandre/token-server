@@ -10,4 +10,5 @@ defmodule TokenServer do
   """
 
   defdelegate create_user(params), to: User.Create, as: :call
+  defdelegate delete_user(id), to: User.Delete, as: :call
 end
