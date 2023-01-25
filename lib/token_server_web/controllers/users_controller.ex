@@ -15,5 +15,5 @@ defmodule TokenServerWeb.UsersController do
     |> render("create.json", user: user)
   end
 
-  defp handle_response({:error, user} = error, _conn), do: error
+  defp handle_response({:error, _user} = error, _conn), do: error
 end
